@@ -1,1 +1,1 @@
-# A self deployed personal website built on Blazor webassembly and Cosmic CMS
+# A self deployed personal website, built on Blazor webassembly and Cosmic CMS
