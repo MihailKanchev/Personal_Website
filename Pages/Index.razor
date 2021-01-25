@@ -1,0 +1,56 @@
+﻿@page "/"
+@inject HttpClient Http
+@using Microsoft.Extensions.Configuration;
+@using Models
+@inject IConfiguration Configuration
+
+    <div class="loader"></div>
+@*@if (allPosts == null)
+{
+    
+}*@
+@*else
+{
+    <section class="text-gray-700 body-font">
+        <div class="container px-5 pb-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+                @foreach (var post in allPosts.objects)
+                {
+                    <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
+                        <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
+                            <div class="p-6">
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title</h1>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+
+@code {
+    private AllPost allPosts = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string cosmic_bucket_slug = Configuration["AppSettings:COSMIC_BUCKET_SLUG"];
+        string cosmic_read_key = Configuration["AppSettings:COSMIC_READ_KEY"];
+        var url = "https://api.cosmicjs.com/v1/{COSMIC_BUCKET_SLUG}/objects?pretty=true&hide_metafields=true&type=posts&read_key={COSMIC_READ_KEY}";
+        url = url.Replace("{COSMIC_BUCKET_SLUG}", cosmic_bucket_slug);
+        url = url.Replace("{COSMIC_READ_KEY}", cosmic_read_key);
+        allPosts = await Http.GetFromJsonAsync<AllPost>(url);
+    }
+    public class AllPost
+    {
+        public int limit { get; set; }
+        public int total { get; set; }
+        public Post[] objects { get; set; }
+    }
+    public class PostObject
+    {
+        public List<Post> _items { get; set; }
+    }
+}*@
