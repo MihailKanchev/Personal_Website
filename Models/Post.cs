@@ -18,6 +18,7 @@ namespace BlazorCosmicBlog.Models
     public class PostMetadata
     {
         public Hero hero { get; set; }
+        public string Type { get; set; }
         //other
     }
     public class Hero
@@ -25,6 +26,7 @@ namespace BlazorCosmicBlog.Models
         public string url { get; set; }
         public string imgix_url { get; set; }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -45,4 +47,7 @@ namespace BlazorCosmicBlog.Models
 =======
 >>>>>>> parent of bc9e297... Merge branch 'test'
     }
+=======
+
+>>>>>>> parent of e20b4c1... Merge branch 'master' into test
 }
