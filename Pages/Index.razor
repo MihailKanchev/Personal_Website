@@ -4,16 +4,6 @@
 @using Models;
 @inject IConfiguration Configuration
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div class="loader"></div>
-@*@if (allPosts == null)
-{
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
-    
-
 @if (allPosts == null)
 {
     <p>Loading..</p>
@@ -52,127 +42,18 @@ else
 
     </div>
 
-    @*//Blogposts*@
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 pb-24 mx-auto">
-            <div class="flex flex-wrap -m-4">
-                @foreach (var post in display)
-                {
-<<<<<<< HEAD
-                    case 0:
-                        @foreach (var post in all)
-                        {
-                            <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                                <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden hover-overlay shadow text-center">
-                                    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
-                                    <div class="p-6">
-                                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title @post.Metadata.Type</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        }
-                        break;
-                    case 1:
-                        @foreach (var post in ml)
-                        {
-                            <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                                <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden hover-overlay shadow text-center">
-                                    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
-                                    <div class="p-6">
-                                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title @post.Metadata.Type</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        }
-                        break;
-                    case 2:
-                        @foreach (var post in gmd)
-                        {
-                            <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                                <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden hover-overlay shadow text-center">
-                                    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
-                                    <div class="p-6">
-                                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title @post.Metadata.Type</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        }
-                        break;
-                    case 3:
-                        @foreach (var post in other)
-                        {
-                            <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                                <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden hover-overlay shadow text-center">
-                                    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
-                                    <div class="p-6">
-                                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title @post.Metadata.Type</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        }
-                        break;
->>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
-=======
-    <div class="loader"></div>
-@*@if (allPosts == null)
-{
-    
-}*@
-@*else
-{
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 pb-24 mx-auto">
-            <div class="flex flex-wrap -m-4">
-                @foreach (var post in allPosts.objects)
-                {
-                    <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                        <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
-                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
-                            <div class="p-6">
-                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title</h1>
-                            </div>
-                        </div>
-                    </a>
->>>>>>> parent of bc9e297... Merge branch 'test'
-=======
-                    <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                        <div class="h-full border-2 border-green-200 rounded-lg overflow-hidden hover-overlay shadow text-center transform hover:scale-110 motion-reduce:transform-none duration-500">
-                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="@post.Title">
-                            <div class="p-6">
-                                <h1 class="text-white title-font text-lg font-medium text-gray-900 mb-3"><b>@post.Title</b></h1>
-                            </div>
-                        </div>
-                    </a>
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
-                }
-            </div>
-        </div>
-    </section>
-</div>
-}
-
+   </div>
 
 @code {
     //Lists to store content from  CMS
     private AllPost allPosts = null;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
     private List<Post> ml = new List<Post>(), gmd = new List<Post>(), other = new List<Post>(), all = new List<Post>();
     //List to store content on display
     private List<Post> display = null;
     //Link to the profile logo image
     private String logo = null;
-<<<<<<< HEAD
+
     int filter = 0;
->>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
-=======
->>>>>>> parent of bc9e297... Merge branch 'test'
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
 
     protected override async Task OnInitializedAsync()
     {
@@ -182,14 +63,8 @@ else
 
         url = url.Replace("{COSMIC_BUCKET_SLUG}", cosmic_bucket_slug);
         url = url.Replace("{COSMIC_READ_KEY}", cosmic_read_key);
-<<<<<<< HEAD
-        allPosts = await Http.GetFromJsonAsync<AllPost>(url);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
+        allPosts = await Http.GetFromJsonAsync<AllPost>(url);
 
         allPosts = await Http.GetFromJsonAsync<AllPost>(url);
 
@@ -214,14 +89,9 @@ else
                     break;
             }
         }
-<<<<<<< HEAD
->>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
-=======
->>>>>>> parent of bc9e297... Merge branch 'test'
-=======
+
         //set the blog posts view
         display = all;
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
     }
     public class AllPost
     {
@@ -233,13 +103,7 @@ else
     {
         public List<Post> _items { get; set; }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-}*@
-=======
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
+
     public void SetFilter(int i)
     {
         switch (i)
@@ -255,10 +119,5 @@ else
         }
     }
 }
-<<<<<<< HEAD
->>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
-=======
-}*@
->>>>>>> parent of bc9e297... Merge branch 'test'
-=======
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
+
+
