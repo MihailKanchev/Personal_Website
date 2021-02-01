@@ -10,40 +10,40 @@
 }
 else
 {
-<div>
-    @*//Logo*@
-    <div id="wrapper" class="mt-5">
-        <img class="rounded-pill mx-auto d-block mb-3 mw-5 opacity-50 transform hover:scale-110 hover:opacity-100 duration-500 hover" src="@logo?w=250&h=250" alt="logo">
-        <p class="text text-center justify-content-center"><b>Mihail Kanchev</b></p>
+    <div>
+        @*//Logo*@
+        <div id="wrapper" class="mt-5">
+            <img class="rounded-pill mx-auto d-block mb-3 mw-5 opacity-50 transform hover:scale-110 hover:opacity-100 duration-500 hover" src="@logo?w=250&h=250" alt="logo">
+            <p class="text text-center justify-content-center"><b>Mihail Kanchev</b></p>
+        </div>
+
+        @*//Navbar*@
+        <div class="container text-center justify-content-center pb-3">
+
+            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(0)">
+                <p class="p-2"><b>All</b></p>
+            </button>
+
+            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(1)">
+                <p class="p-2"><b>Machine Learning</b></p>
+            </button>
+
+            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(2)">
+                <p class="p-2"><b>Unity</b></p>
+            </button>
+
+            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(3)">
+                <p class="p-2"><b>Other</b></p>
+            </button>
+
+        </div>
+
     </div>
-
-    @*//Navbar*@
-    <div class="container text-center justify-content-center pb-3">
-
-        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(0)">
-            <p class="p-2"><b>All</b></p>
-        </button>
-
-        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(1)">
-            <p class="p-2"><b>Machine Learning</b></p>
-        </button>
-
-        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(2)">
-            <p class="p-2"><b>Unity</b></p>
-        </button>
-
-        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(3)">
-            <p class="p-2"><b>Other</b></p>
-        </button>
-
-    </div>
-
-   </div>
-
+}
 @code {
     //Lists to store content from  CMS
     private AllPost allPosts = null;
