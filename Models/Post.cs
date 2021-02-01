@@ -26,28 +26,16 @@ namespace BlazorCosmicBlog.Models
         public string url { get; set; }
         public string imgix_url { get; set; }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of bc9e297... Merge branch 'test'
     public class Author
     {
         public string slug { get; set; }
         public string status { get; set; }
         public string title { get; set; }
-<<<<<<< HEAD
-=======
+    }
 
     public class Logo
     {
         public string url { get; set; }
         public string imgix_url { get; set; }
->>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
-=======
->>>>>>> parent of bc9e297... Merge branch 'test'
     }
-=======
-
->>>>>>> parent of e20b4c1... Merge branch 'master' into test
 }
