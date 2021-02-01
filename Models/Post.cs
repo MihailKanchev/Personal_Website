@@ -27,9 +27,4 @@ namespace BlazorCosmicBlog.Models
         public string imgix_url { get; set; }
     }
 
-    public class Logo
-    {
-        public string url { get; set; }
-        public string imgix_url { get; set; }
-    }
 }
