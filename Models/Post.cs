@@ -18,6 +18,7 @@ namespace BlazorCosmicBlog.Models
     public class PostMetadata
     {
         public Hero hero { get; set; }
+        public string Type { get; set; }
         //other
     }
     public class Hero
@@ -25,10 +26,5 @@ namespace BlazorCosmicBlog.Models
         public string url { get; set; }
         public string imgix_url { get; set; }
     }
-    public class Author
-    {
-        public string slug { get; set; }
-        public string status { get; set; }
-        public string title { get; set; }
-    }
+
 }

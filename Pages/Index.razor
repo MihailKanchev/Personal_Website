@@ -1,26 +1,60 @@
 ﻿@page "/"
 @inject HttpClient Http
 @using Microsoft.Extensions.Configuration;
-@using Models
+@using Models;
 @inject IConfiguration Configuration
 
-    <div class="loader"></div>
-@*@if (allPosts == null)
-{
     
-}*@
-@*else
+
+@if (allPosts == null)
 {
+    <p>Loading..</p>
+}
+else
+{
+<div>
+    @*//Logo*@
+    <div id="wrapper" class="mt-5">
+        <img class="rounded-pill mx-auto d-block mb-3 mw-5 opacity-50 transform hover:scale-110 hover:opacity-100 duration-500 hover" src="@logo?w=250&h=250" alt="logo">
+        <p class="text text-center justify-content-center"><b>Mihail Kanchev</b></p>
+    </div>
+
+    @*//Navbar*@
+    <div class="container text-center justify-content-center pb-3">
+
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(0)">
+            <p class="p-2"><b>All</b></p>
+        </button>
+
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(1)">
+            <p class="p-2"><b>Machine Learning</b></p>
+        </button>
+
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(2)">
+            <p class="p-2"><b>Unity</b></p>
+        </button>
+
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(3)">
+            <p class="p-2"><b>Other</b></p>
+        </button>
+
+    </div>
+
+    @*//Blogposts*@
     <section class="text-gray-700 body-font">
         <div class="container px-5 pb-24 mx-auto">
             <div class="flex flex-wrap -m-4">
-                @foreach (var post in allPosts.objects)
+                @foreach (var post in display)
                 {
                     <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
-                        <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
-                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
+                        <div class="h-full border-2 border-green-200 rounded-lg overflow-hidden hover-overlay shadow text-center transform hover:scale-110 motion-reduce:transform-none duration-500">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="@post.Title">
                             <div class="p-6">
-                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title</h1>
+                                <h1 class="text-white title-font text-lg font-medium text-gray-900 mb-3"><b>@post.Title</b></h1>
                             </div>
                         </div>
                     </a>
@@ -28,20 +62,53 @@
             </div>
         </div>
     </section>
+</div>
 }
 
 
 @code {
+    //Lists to store content from  CMS
     private AllPost allPosts = null;
+    private List<Post> ml = new List<Post>(), gmd = new List<Post>(), other = new List<Post>(), all = new List<Post>();
+    //List to store content on display
+    private List<Post> display = null;
+    //Link to the profile logo image
+    private String logo = null;
 
     protected override async Task OnInitializedAsync()
     {
         string cosmic_bucket_slug = Configuration["AppSettings:COSMIC_BUCKET_SLUG"];
         string cosmic_read_key = Configuration["AppSettings:COSMIC_READ_KEY"];
         var url = "https://api.cosmicjs.com/v1/{COSMIC_BUCKET_SLUG}/objects?pretty=true&hide_metafields=true&type=posts&read_key={COSMIC_READ_KEY}";
+
         url = url.Replace("{COSMIC_BUCKET_SLUG}", cosmic_bucket_slug);
         url = url.Replace("{COSMIC_READ_KEY}", cosmic_read_key);
+
         allPosts = await Http.GetFromJsonAsync<AllPost>(url);
+
+        foreach (var post in allPosts.objects)
+        {
+            switch (post.Metadata.Type)
+            {
+                case "Other":
+                    other.Add(post);
+                    all.Add(post);
+                    break;
+                case "Machine Learning":
+                    ml.Add(post);
+                    all.Add(post);
+                    break;
+                case "Game Development":
+                    gmd.Add(post);
+                    all.Add(post);
+                    break;
+                case "logo":
+                    logo = post.Metadata.hero.imgix_url;
+                    break;
+            }
+        }
+        //set the blog posts view
+        display = all;
     }
     public class AllPost
     {
@@ -53,4 +120,18 @@
     {
         public List<Post> _items { get; set; }
     }
-}*@
+    public void SetFilter(int i)
+    {
+        switch (i)
+        {
+            case 0:display = all;
+                break;
+            case 1: display = ml;
+                break;
+            case 2: display = gmd;
+                break;
+            case 3: display = other; 
+                break;
+        }
+    }
+}
