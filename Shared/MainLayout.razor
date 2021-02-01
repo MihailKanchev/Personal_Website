@@ -1,8 +1,13 @@
 ﻿@inherits LayoutComponentBase
-     
-    <div class="main">
-        <div class="d-flex align-items-center justify-content-center text-center">
-            @Body
-        </div>
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="content px-4">
+        @Body
     </div>
-    <SiteFooter />
+    <SiteFooter></SiteFooter>
+</div>
+
