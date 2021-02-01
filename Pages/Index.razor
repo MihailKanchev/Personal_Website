@@ -5,6 +5,7 @@
 @inject IConfiguration Configuration
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="loader"></div>
 @*@if (allPosts == null)
 {
@@ -107,6 +108,28 @@ else
                         }
                         break;
 >>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
+=======
+    <div class="loader"></div>
+@*@if (allPosts == null)
+{
+    
+}*@
+@*else
+{
+    <section class="text-gray-700 body-font">
+        <div class="container px-5 pb-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+                @foreach (var post in allPosts.objects)
+                {
+                    <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
+                        <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720&h=400" alt="blog">
+                            <div class="p-6">
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">@post.Title</h1>
+                            </div>
+                        </div>
+                    </a>
+>>>>>>> parent of bc9e297... Merge branch 'test'
                 }
             </div>
         </div>
@@ -117,11 +140,14 @@ else
 @code {
     private AllPost allPosts = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private List<Post> ml = new List<Post>(), gmd = new List<Post>(), other = new List<Post>(), all = new List<Post>();
     private String logo = null;
     int filter = 0;
 >>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
+=======
+>>>>>>> parent of bc9e297... Merge branch 'test'
 
     protected override async Task OnInitializedAsync()
     {
@@ -131,6 +157,7 @@ else
         url = url.Replace("{COSMIC_BUCKET_SLUG}", cosmic_bucket_slug);
         url = url.Replace("{COSMIC_READ_KEY}", cosmic_read_key);
         allPosts = await Http.GetFromJsonAsync<AllPost>(url);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -158,6 +185,8 @@ else
             }
         }
 >>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
+=======
+>>>>>>> parent of bc9e297... Merge branch 'test'
     }
     public class AllPost
     {
@@ -170,6 +199,7 @@ else
         public List<Post> _items { get; set; }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }*@
 =======
     public void SetFilter(int i)
@@ -178,3 +208,6 @@ else
     }
 }
 >>>>>>> parent of e94528a... Background and ui set up. Blog-post display needs fixing.
+=======
+}*@
+>>>>>>> parent of bc9e297... Merge branch 'test'
