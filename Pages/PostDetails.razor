@@ -2,8 +2,9 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @using Microsoft.Extensions.Configuration;
-@using System.Text.Json.Serialization
-@using Models
+@using System.Text.Json.Serialization;
+@using BlazorAnimate;
+@using Models;
 @inject IConfiguration Configuration
 
 @if (postDetails != null && postDetails.post == null)
@@ -12,16 +13,22 @@
 }
 else
 {
-    <button class="top-0 my-1 fixed mx-auto text-white border-4 py-1 px-3 focus:outline-none transform duration-500 hover hover:scale-125 rounded-pill text-lg" @onclick="NavigateToIndexComponent">Back</button>
-    <section class="m-5 rounded bg-green-600 bg-opacity-75 text-white-50 body-font">
-        <div class="container mx-auto flex px-5 pb-24 items-center justify-center flex-col">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">@postDetails.post.Title</h1>
-            <img class="mb-10 object-cover object-center rounded" alt="hero" src="@postDetails.post.Metadata.hero.imgix_url">
-            <div class=" w-full">
-                <div class="mb-8 leading-relaxed text-white">@((MarkupString)postDetails.post.Content)</div>
-            </div>
+    <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(0.5)">
+        <button class="top-0 my-1 fixed mx-auto text-white border-4 py-1 px-3 focus:outline-none transform duration-500 hover hover:scale-125 rounded-pill text-lg" @onclick="NavigateToIndexComponent">Back</button>
+        <div class="mt-2">
+            <section class="m-5 rounded bg-green-600 bg-opacity-75 text-white-50 body-font">
+                <div class="container mt-3 mx-auto flex px-5 pb-24 items-center justify-center flex-col">
+                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">@postDetails.post.Title</h1>
+                    <img class="mb-10 object-cover object-center rounded" alt="hero" src="@postDetails.post.Metadata.hero.imgix_url">
+                    <div class=" w-full">
+                        <div class="mb-8 leading-relaxed text-white">@((MarkupString)postDetails.post.Content)</div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </Animate>
+
+
 }
 
 @code {
