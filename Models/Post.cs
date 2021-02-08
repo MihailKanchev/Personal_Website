@@ -20,6 +20,7 @@ namespace BlazorCosmicBlog.Models
         public Hero hero { get; set; }
         public string Type { get; set; }
         //other
+        public string Teaser { get; set; }
     }
     public class Hero
     {

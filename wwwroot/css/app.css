@@ -28,11 +28,6 @@ html {
     background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
 /*logo text*/
 
 #wrapper {

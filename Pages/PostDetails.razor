@@ -13,28 +13,28 @@
 }
 else
 {
-<div>
+
+<div class="container">
     <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(0.5)">
         <div class="my-3">
             <section class="m-5 rounded bg-green-600 bg-opacity-75 text-white-50 body-font">
                 <div class="container mt-3 mx-auto flex px-5 pb-24 items-center justify-center flex-col">
-                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">@postDetails.post.Title</h1>
+                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white text-center">@postDetails.post.Title</h1>
                     <img class="mb-10 object-cover object-center rounded" alt="hero" src="@postDetails.post.Metadata.hero.imgix_url">
                     <div class=" w-full">
                         <div class="mb-8 leading-relaxed text-white">@((MarkupString)postDetails.post.Content)</div>
                     </div>
-                    <button class="right-0 z-10 my-1 fixed btn-primary text-white py-1 px-3 focus:outline-none transform duration-500 hover hover:scale-125 rounded-pill text-lg" @onclick="NavigateToIndexComponent">Back</button>
+                    <button class="right-0 z-10 my-1 fixed btn-primary text-white py-3 px-3 focus:outline-none transform duration-500 hover hover:scale-125 rounded-pill text-lg" @onclick="NavigateToIndexComponent">Back</button>
                 </div>
             </section>
         </div>
     </Animate>
+    <div id="bottom-0">
+        <p class="text-white text-center">
+            2021 Mihail Kanchev - Powered by <b>Blazor</b>, <b>Cosmic</b>, <b>Nginx</b> and <b>Raspberry Pi</b>
+        </p>
+    </div>
 </div>
-<div id="footer">
-    <p class="text-white text-center">
-        2021 Mihail Kanchev - Powered by <b>Blazor</b>, <b>Cosmic</b>, <b>Nginx</b> and <b>Raspberry Pi</b>
-    </p>
-</div>
-
 }
 
 @code {

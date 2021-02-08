@@ -21,29 +21,34 @@ else
         </div>
 
         @*//Navbar*@
-        <div class="container text-center justify-content-center pb-3">
+    <div class="container text-center justify-content-center pb-3">
 
-            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(0)">
-                <p class="p-2"><b>All</b></p>
-            </button>
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(0)">
+            <p class="p-2"><b>All</b></p>
+        </button>
 
-            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(1)">
-                <p class="p-2"><b>Machine Learning</b></p>
-            </button>
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(1)">
+            <p class="p-2"><b>Machine Learning</b></p>
+        </button>
 
-            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(2)">
-                <p class="p-2"><b>Unity</b></p>
-            </button>
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(2)">
+            <p class="p-2"><b>Unity</b></p>
+        </button>
 
-            <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
-                    style="border: 0px; outline: 0px;" @onclick="() => SetFilter(3)">
-                <p class="p-2"><b>Other</b></p>
-            </button>
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(3)">
+            <p class="p-2"><b>Mixed Reality</b></p>
+        </button>
 
-        </div>
+        <button type="button" class="text-white bg-green-600 bg-opacity-75 rounded-pill m-2 transform duration-500 hover hover:scale-125"
+                style="border: 0px; outline: 0px;" @onclick="() => SetFilter(4)">
+            <p class="p-2"><b>Other</b></p>
+        </button>
+
+    </div>
 
         @*//Blogposts*@
         @if (filter == 0)
@@ -60,7 +65,8 @@ else
                                     <div class="h-full border-2 border-green-200 rounded-lg overflow-hidden hover-overlay shadow text-center transform hover:scale-110 motion-reduce:transform-none duration-500">
                                         <img class="h-48 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720" alt="@post.Title">
                                         <div class="p-6">
-                                            <h1 class="text-white title-font text-lg font-medium mb-3"><b>@post.Title</b></h1>
+                                            <h1 class="text-white title-font text-lg font-medium mb-1"><b>@post.Title</b></h1>
+                                            <p class="text-white title-font font-medium mb-1">@((MarkupString)post.Metadata.Teaser)</p>
                                         </div>
                                     </div>
                                 </a>
@@ -85,6 +91,7 @@ else
                                         <img class="h-48 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720" alt="@post.Title">
                                         <div class="p-6">
                                             <h1 class="text-white title-font text-lg font-medium mb-3"><b>@post.Title</b></h1>
+                                            <p class="text-white title-font font-medium mb-1">@((MarkupString)post.Metadata.Teaser)</p>
                                         </div>
                                     </div>
                                 </a>
@@ -101,7 +108,7 @@ else
                     <div class="container px-5 pb-24 mx-auto">
                         <div class="flex flex-wrap -m-4">
 
-                            @foreach (var post in gmd)
+                            @foreach (var post in unity)
                             {
                                 <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
 
@@ -109,6 +116,7 @@ else
                                         <img class="h-48 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720" alt="@post.Title">
                                         <div class="p-6">
                                             <h1 class="text-white title-font text-lg font-medium mb-3"><b>@post.Title</b></h1>
+                                            <p class="text-white title-font font-medium mb-1">@((MarkupString)post.Metadata.Teaser)</p>
                                         </div>
                                     </div>
                                 </a>
@@ -125,7 +133,7 @@ else
                     <div class="container px-5 pb-24 mx-auto">
                         <div class="flex flex-wrap -m-4">
 
-                            @foreach (var post in other)
+                            @foreach (var post in xr)
                             {
                                 <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
 
@@ -133,6 +141,7 @@ else
                                         <img class="h-48 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720" alt="@post.Title">
                                         <div class="p-6">
                                             <h1 class="text-white title-font text-lg font-medium mb-3"><b>@post.Title</b></h1>
+                                            <p class="text-white title-font font-medium mb-1">@((MarkupString)post.Metadata.Teaser)</p>
                                         </div>
                                     </div>
                                 </a>
@@ -142,7 +151,32 @@ else
                 </section>
             </Animate>
         }
-        <div id="footer">
+        @if (filter == 4)
+        {
+            <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(0.5)">
+                <section class="text-white body-font">
+                    <div class="container px-5 pb-24 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+
+                            @foreach (var post in other)
+                            {
+                                <a class="p-4 md:w-1/3" href="@($"post/{post.Slug}")">
+
+                                    <div class="h-full border-2 border-green-200 rounded-lg overflow-hidden hover-overlay shadow text-center transform hover:scale-110 motion-reduce:transform-none duration-500">
+                                        <img class="h-48 w-full object-cover object-center" src="@post.Metadata.hero.imgix_url?w=720" alt="@post.Title">
+                                        <div class="p-6">
+                                            <h1 class="text-white title-font text-lg font-medium mb-3"><b>@post.Title</b></h1>
+                                            <p class="text-white title-font font-medium mb-1">@((MarkupString)post.Metadata.Teaser)</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </section>
+            </Animate>
+        }
+        <div class="bottom-0">
             <p class="p-2 text-white text-center">
                 2021 Mihail Kanchev - Powered by <b>Blazor</b>, <b>Cosmic</b>, <b>Nginx</b> and <b>Raspberry Pi</b>
             </p>
@@ -154,7 +188,7 @@ else
     @code {
         //Lists to store content from  CMS
         private AllPost allPosts = null;
-        private List<Post> ml = new List<Post>(), gmd = new List<Post>(), other = new List<Post>(), all = new List<Post>();
+        private List<Post> ml = new List<Post>(), unity = new List<Post>(), other = new List<Post>(), all = new List<Post>(), xr = new List<Post>();
 
         //Link to the profile logo image
         private String logo = null;
@@ -176,16 +210,20 @@ else
             {
                 switch (post.Metadata.Type)
                 {
-                    case "Other":
+                    case "other":
                         other.Add(post);
                         all.Add(post);
                         break;
-                    case "Machine Learning":
+                    case "ml":
                         ml.Add(post);
                         all.Add(post);
                         break;
-                    case "Game Development":
-                        gmd.Add(post);
+                    case "unity":
+                        unity.Add(post);
+                        all.Add(post);
+                        break;
+                    case "xr":
+                        xr.Add(post);
                         all.Add(post);
                         break;
                     case "logo":
@@ -222,15 +260,11 @@ else
                 case 3:
                     filter = 3;
                     break;
+                case 4:
+                    filter = 4;
+                    break;
             }
         }
-
-        //private Animate myAnim;
-
-        //private void RunAnimation()
-        //{
-        //    myAnim.Run();
-        //}
 }
 
 
